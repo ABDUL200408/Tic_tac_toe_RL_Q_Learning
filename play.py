@@ -30,7 +30,7 @@ def play_human_vs_ai(agent_file: str = 'agent1_final.pkl', human_first: bool = T
     
     try:
         agent.load(agent_file)
-    except:
+    except (FileNotFoundError, Exception) as e:
         print(f"Warning: Could not load agent from {agent_file}")
         print("Using untrained agent")
     
@@ -112,12 +112,12 @@ def play_ai_vs_ai(agent1_file: str = 'agent1_final.pkl',
     
     try:
         agent1.load(agent1_file)
-    except:
+    except (FileNotFoundError, Exception) as e:
         print(f"Warning: Could not load agent1 from {agent1_file}")
     
     try:
         agent2.load(agent2_file)
-    except:
+    except (FileNotFoundError, Exception) as e:
         print(f"Warning: Could not load agent2 from {agent2_file}")
     
     print("\n" + "="*50)
