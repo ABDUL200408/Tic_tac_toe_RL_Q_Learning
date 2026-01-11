@@ -8,6 +8,9 @@ from typing import Tuple, Optional, List
 class TicTacToe:
     """5x5 Tic-Tac-Toe game environment"""
     
+    # Constants
+    INVALID_MOVE_PENALTY = -10
+    
     def __init__(self, board_size: int = 5):
         """
         Initialize the game environment
@@ -75,7 +78,7 @@ class TicTacToe:
         
         if not self.is_valid_action(row, col):
             # Invalid move
-            return self.board.copy(), -10, True, {"winner": -self.current_player}
+            return self.board.copy(), self.INVALID_MOVE_PENALTY, True, {"winner": -self.current_player}
         
         # Make the move
         self.board[row, col] = self.current_player

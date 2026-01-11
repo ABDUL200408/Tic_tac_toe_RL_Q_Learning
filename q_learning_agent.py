@@ -61,7 +61,7 @@ class QLearningAgent:
         return f"{action[0]},{action[1]}"
     
     def choose_action(self, board: np.ndarray, available_actions: list, 
-                     training: bool = True) -> Tuple[int, int]:
+                     training: bool = True) -> Optional[Tuple[int, int]]:
         """
         Choose an action using epsilon-greedy policy
         
@@ -71,7 +71,7 @@ class QLearningAgent:
             training: Whether in training mode
             
         Returns:
-            Selected action (row, col)
+            Selected action (row, col), or None if no actions available
         """
         if not available_actions:
             return None
